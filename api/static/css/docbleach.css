@@ -1,17 +1,17 @@
-.docbleach_severe {
+.CDRshield_severe {
     color: darkred;
     font-weight: 600;
 }
 
-.docbleach_warning {
+.CDRshield_warning {
     color: red;
 }
 
-.docbleach_info {
+.CDRshield_info {
     color: #0091D7;
 }
 
-/* Used by docbleach's drop zone */
+/* Used by CDRshield's drop zone */
 
 .js .inputfile,
 .js #subButton {

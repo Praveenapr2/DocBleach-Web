@@ -1,5 +1,5 @@
 document.body.classList.add('js');
-var docbleach_endpoint = "/v1/";
+var CDRshield_endpoint = "/v1/";
 
 (function () {
   var formElement = document.querySelector("form#uploadForm");
@@ -63,7 +63,7 @@ var docbleach_endpoint = "/v1/";
     swal.showLoading();
     $.ajax({
       type: "POST",
-      url: docbleach_endpoint + "tasks",
+      url: CDRshield_endpoint + "tasks",
       data: formData,
       processData: false,
       contentType: false,
@@ -88,7 +88,7 @@ var docbleach_endpoint = "/v1/";
   function checkFileStatus(task_id) {
     $.ajax({
       type: "GET",
-      url: docbleach_endpoint + "tasks/" + task_id,
+      url: CDRshield_endpoint + "tasks/" + task_id,
       success: function (data) {
         console.log(data);
         console.log("Got a task id state: " + task_id);
@@ -112,7 +112,7 @@ function displayResponse(response) {
     return;
   }
   if (response.infos && response.infos.join) {
-    var htmlCode = parseDocbleach(response.infos.join("\n"));
+    var htmlCode = parseCDRshield(response.infos.join("\n"));
 
     var modalData = {
       title: "Results",
@@ -144,7 +144,7 @@ function displayResponse(response) {
   }
 }
 
-function parseDocbleach(infos) {
+function parseCDRshield(infos) {
   var parent = document.createElement("div");
   var lines = infos.split(/\r?\n/); // Allow multiple lines per blob
 
@@ -152,16 +152,16 @@ function parseDocbleach(infos) {
     var child = document.createElement("p");
 
     if (line.indexOf("WARN ") === 0) {
-      child.classList.add("docbleach_warning");
+      child.classList.add("CDRshield_warning");
       line = line.substring("WARN ".length);
     } else if (line.indexOf("INFO ") === 0) {
-      child.classList.add("docbleach_info");
+      child.classList.add("CDRshield_info");
       line = line.substring("INFO ".length);
     } else if (line.indexOf("ERROR ") === 0) {
-      child.classList.add("docbleach_severe");
+      child.classList.add("CDRshield_severe");
       line = line.substring("ERROR ".length);
     } else if (line.indexOf("FATAL ") === 0) {
-      child.classList.add("docbleach_severe");
+      child.classList.add("CDRshield_severe");
       line = line.substring("FATAL ".length);
     }
     child.innerText = line;
