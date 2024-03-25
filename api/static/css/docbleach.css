@@ -1,14 +1,14 @@
 .CDRshield_severe {
-    color: darkred;
+    color: rgb(25, 0, 139);
     font-weight: 600;
 }
 
 .CDRshield_warning {
-    color: red;
+    color: rgb(140, 0, 255);
 }
 
 .CDRshield_info {
-    color: #0091D7;
+    color: #24d700;
 }
 
 /* Used by CDRshield's drop zone */
@@ -37,7 +37,7 @@
 
 .inputfile + label {
     color: #f1e5e6;
-    background-color: #d3394c;
+    background-color: #6239d3;
 }
 
 .inputfile:focus + label,
