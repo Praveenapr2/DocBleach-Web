@@ -44,4 +44,4 @@ ENTRYPOINT ["python3", "/app/docbleach.py"]
 FROM docbleach/api:latest
 
 # Copy updated index.html into the container
-COPY index..html C:\Users\Praveena\DocBleach-Web\api\static\index..html
+COPY updatedindex.html 
