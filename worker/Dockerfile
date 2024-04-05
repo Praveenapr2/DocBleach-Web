@@ -19,12 +19,10 @@ RUN apk add --no-cache --update-cache \
     python3 \
     && \
     update-ca-certificates && \
-
     # Add glibc, wanted by plik (compiled with Go)
     wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
     wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.23-r3/glibc-2.23-r3.apk && \
     apk add glibc-2.23-r3.apk && \
-
     # Setup Python 3
     python3 -m ensurepip && \
     rm -r /usr/lib/python*/ensurepip && \
@@ -32,10 +30,8 @@ RUN apk add --no-cache --update-cache \
     rm -r /root/.cache && \
     # Remove openssl, only needed for wget
     apk del openssl wget unzip && \
-
     # We add an user
     adduser -S -u 1000 worker && \
-
     # Add default config for Plik, required
     chmod o+x /usr/bin/plik && \
     echo 'URL = "https://plik.root.gg"' > /home/worker/.plikrc

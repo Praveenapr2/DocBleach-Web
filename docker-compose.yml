@@ -3,7 +3,12 @@ version: '2.1'
 services:
   # Redis
   redis:
-    image: redis
+    image: redis 
+      - REDIS_PORT=6379 
+      - REDIS_BIND=0.0.0.0
+    container_name: docbleach-web-redis-1
+  networks:
+  - docbleach-web_default
 
   # Our rest API
   web:
@@ -27,8 +32,8 @@ services:
       dockerfile: Dockerfile
     image: docbleach/worker:latest
     environment:
-      - CELERY_BROKER=redis://redis/
-      - CELERY_RESULT_BACKEND=redis://redis/
+      - CELERY_BROKER=redis://172.19.0.2:6379/
+      - CELERY_RESULT_BACKEND=redis://172.19.0.2:6379/
       - FINAL_PLIK_SERVER=${FINAL_PLIK_SERVER:-https://plik.root.gg}
     tmpfs: /tmp
 
