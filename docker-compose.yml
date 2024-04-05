@@ -7,11 +7,6 @@ services:
       - REDIS_PORT=6379 
       - REDIS_BIND=0.0.0.0
     container_name: docbleach-web-redis-1
-    networks:
-      - docbleach-web_default
-networks:
-  docbleach-web_default:
-    driver: bridge
 
   # Our rest API
   web:
