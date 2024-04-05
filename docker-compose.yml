@@ -9,6 +9,9 @@ services:
     container_name: docbleach-web-redis-1
     networks:
       - docbleach-web_default
+networks:
+  docbleach-web_default:
+    driver: null
 
   # Our rest API
   web:
