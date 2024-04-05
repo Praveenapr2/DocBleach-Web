@@ -11,7 +11,7 @@ services:
       - docbleach-web_default
 networks:
   docbleach-web_default:
-    driver: null
+    driver: bridge
 
   # Our rest API
   web:
