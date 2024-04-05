@@ -31,8 +31,8 @@ services:
       dockerfile: Dockerfile
     image: docbleach/worker:latest
     environment:
-      - CELERY_BROKER=redis://172.19.0.2:6379/
-      - CELERY_RESULT_BACKEND=redis://172.19.0.2:6379/
+      - CELERY_BROKER=redis://redis/
+      - CELERY_RESULT_BACKEND=redis://redis/
       - FINAL_PLIK_SERVER=${FINAL_PLIK_SERVER:-https://plik.root.gg}
     tmpfs: /tmp
 
