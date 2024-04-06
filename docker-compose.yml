@@ -4,11 +4,12 @@ services:
   # Redis
   redis:
     image: redis 
+    ports:
+      - "6379:6379"
     environment:
       - REDIS_PORT=6379 
       - REDIS_BIND=0.0.0.0
     container_name: docbleach-web-redis-1
-
   # Our rest API
   web:
     build:
@@ -35,7 +36,6 @@ services:
       - CELERY_RESULT_BACKEND=redis://redis/
       - FINAL_PLIK_SERVER=${FINAL_PLIK_SERVER:-https://plik.root.gg}
     tmpfs: /tmp
-
   plik:
     image: rootgg/plik
     expose:
